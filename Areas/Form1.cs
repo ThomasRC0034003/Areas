@@ -12,6 +12,7 @@ namespace Areas
 {
     public partial class Form1 : Form
     {
+        
         public Form1()
         {
             InitializeComponent();
@@ -29,8 +30,28 @@ namespace Areas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            double length = double.Parse(textBox1.Text);
-            double width = double.Parse(textBox2.Text);
+            double length = 0.0;
+            double width = 0.0;
+            try
+            {
+                length = double.Parse(textBox1.Text);
+            }
+            catch
+            {
+                MessageBox.Show(textBox1.Text + " is not a number");
+                length = 0.0;
+            }
+
+            try 
+            {
+                width = double.Parse(textBox2.Text);
+            }
+            catch
+            {
+                MessageBox.Show(textBox2.Text);
+                width = 0.0;
+            }
+
             double area = length * width;
             textBox3.AppendText(area.ToString());
         }
